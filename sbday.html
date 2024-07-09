@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBDAY</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('phearts.jpg'); /* Default background image */
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.2s ease-in-out;
+        }
+
+        img {
+            width: 500px; /* Set the desired width */
+            height: 300px; /* Maintain the aspect ratio */
+        }
+
+        button {
+            margin: 20px;
+        }
+
+        .red-text {
+            color: red; /* Set the desired color */
+        }
+
+    </style>
+</head>
+<body>
+
+    <img src="20cake.png" alt="sbday" id="valentine-image">
+    
+    
+
+    <div style="font-weight: bold; font-size: 40px;" id="dynamic-text">HAPPY BIRTHDAY SARAH!</div>
+            
+
+    <div class="button-container">
+        <button style="background-color:red; font-size: 40px;" onclick="handleNo()">BLOW THE CANDLES</button>
+    </div>
+
+    <script>
+        var noMessages = [
+            "WE ALL WISH YOU HAPPINESS AND GREAT 20TH BIRTHDAY.",
+            "HAPPY BIRTHDAY FROM DILUC RAGNVINDR.",
+            "HAPPY BIRTHDAY FROM EREN YEAGER.",
+            "HAPPY BIRTHDAY FROM GIYUU TOMIOKA.",
+            "HAPPY BIRTHDAY FROM YUJI ITADORI.",
+            "HAPPY BIRTHDAY FROM SATORU GOJO.",
+            "HAPPY BIRTHDAY FROM MELANIE MARTINEZ.",
+            "AND HAPPY BIRTHDAY FROM ALL YOUR LOVED ONE.",
+            "FREE PALESTINE.",
+            " "
+        ];
+
+        var noIndex = 0;
+        var noCount = 0; // Initialize noCount
+
+        var noImages = [
+            'mf.jpg',
+            'diluc1.jpg',
+            'eren.jpg',
+            'giyuu.png',
+            'YUJI.jpg',
+            'GOJO.jpeg',
+            'mel.png',
+            'fri.jpg',
+            'pal.jpg',
+            'pal.jpg'
+            // Add more image paths as needed
+        ];
+
+          var dynamicText = document.getElementById("dynamic-text");
+          dynamicText.style.color = 'aqua'; // Set default text color to green
+
+        function handleYes() {
+            // Change the text
+            document.getElementById("dynamic-text").innerText = "OMG YES THANK YOU!! \n See you on February 14th cutie <3";
+            var dynamicText = document.getElementById("dynamic-text");
+            dynamicText.style.color = 'green'; // Set default text color to green
+
+            // Remove the buttons
+            var buttonContainer = document.querySelector('.button-container');
+            buttonContainer.style.display = 'none';
+
+            // Change the image
+            var valentineImage = document.getElementById('valentine-image');
+            valentineImage.src = 'aothappy.gif'; // Replace 'new-image.jpg' with the path to your new image
+            valentineImage.alt = 'HAPPY';
+
+            // Change the background image
+            document.body.style.backgroundImage = "url('aotbackhappy.png')";
+        }
+
+        function handleNo() {
+            // "if" statement for No button
+            var dynamicText = document.getElementById("dynamic-text");
+            dynamicText.innerText = noMessages[noIndex];
+
+            // Change the image after each "No" message
+            var valentineImage = document.getElementById('valentine-image');
+            valentineImage.src = noImages[noIndex];
+            valentineImage.alt = 'NO';
+
+            // Increment index, cycle through messages and images
+            noIndex = (noIndex + 1) % Math.min(noMessages.length, noImages.length);
+
+            // Increment noCount
+            noCount++;
+
+            // Change the background image after 7 "No" clicks
+            if (noCount === 20) {
+                document.body.style.backgroundImage = "url('aotback.jpg')";
+                 dynamicText.style.color = 'red'; // Add the 'red-text' class to change text color to red
+                
+            } 
+
+            // End images after 11 No clicks
+            if (noCount === 9) {
+                            var buttonContainer = document.querySelector('.button-container button:last-child');
+            buttonContainer.style.display = 'none';
+            dynamicText.style.color = 'red';
+
+            // Change the text of the "Yes" button
+    var yesButton = document.querySelector('.button-container button:first-child');
+    yesButton.innerText = 'Say Yes to cancel.';
+            
+            var valentineImage = document.getElementById('valentine-image');
+            valentineImage.src = "pal.jpg";
+            valentineImage.alt = 'NO';
+            } 
+        }
+    </script>
+
+</body>
+</html>
+	
